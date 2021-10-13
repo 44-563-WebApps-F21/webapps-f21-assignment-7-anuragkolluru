@@ -74,6 +74,57 @@
 
 
         </div>
-</body>
+        <script>
 
-</html>
+            let ids = [];
+            let triesCount = 0;
+            let animalLocation = 13;
+            let distanceOfAnimal = "unknown";
+
+            for (var i = 0; i < 24; i++) {
+                ids.push("image" + i)
+            }
+
+            function check(index) {
+
+                let imageID = ids[index];
+                if (index == animalLocation) {
+                    document.getElementById(imageID).src = "rat.jpg";
+                } else {
+                    document.getElementById(imageID).src = "hole.jpg";
+                }
+
+
+                triesCount++;
+                document.getElementById("tries").innerHTML = "Number of tries is " + triesCount;
+                distanceOfAnimal = distance(index, animalLocation);
+
+                document.getElementById("distance").innerHTML = "Distance is " + distanceOfAnimal;
+            }
+
+
+            function distance(pos1, pos2) {
+
+                var indexes = [[0, 1, 2, 3, 4, 5], [6, 7, 8, 9, 10, 11], [12, 13, 14, 15, 16, 17], [18, 19, 20, 21, 22, 23]];
+                var horizontal1 = 0, vertical1 = 0, horizontal2 = 0, vertical2 = 0;
+                for (var i = 0; i < 4; i++) {
+                    for (var j = 0; j < 6; j++) {
+                        if (indexes[i][j] == pos1) {
+                            horizontal1 = i;
+                            vertical1 = j;
+                        }
+
+                        if (indexes[i][j] == pos2) {
+                            horizontal2 = i;
+                            vertical2 = j;
+                        }
+                    }
+
+                }
+
+                let distance = Math.max(Math.abs(horizontal2 - horizontal1), Math.abs(vertical2 - vertical1));
+                return distance;
+            }
+</body >
+
+</html >
