@@ -26,25 +26,19 @@
             myTime = Date.now()
             console.log(myTime)
         }
-
         function startTime() {
-            myTime;
-            buttonTime = Date.now();
-
-            for (let i = 0; i < 4; i++) {
+            var startCount = Math.floor(Math.random() * 10 + 2)
+            for (let i = 0; i < startCount; i++) {
                 setTimeout(() => {
-                    document.getElementById("countdown").innerHTML = i;
-                }, (4 - i) * 1000);
+                    document.getElementById("countdown").innerHTML = "Count: " + i
+                }, (startCount - i) * 1000)
             }
             setTimeout(() => {
-                if (myTime == undefined) {
-                    document.getElementById("target").innerHTML = "Too Slow";
-                } else {
-                    let elapsedTime = (-1) * (buttonTime - myTime);
-                    document.getElementById("target").innerHTML = "Time was " + elapsedTime + " ms";
-                }
-            }, 3 * 1000)
+                checkMyTime()
+            }, 3000)
         }
+
+
         function checkMyTime() {
             var element = document.getElementById("target")
             if (myTime == undefined)
@@ -57,7 +51,7 @@
         }
     </script>
 
-    
+
 
 </body>
 
